@@ -1,127 +1,140 @@
-<%- include ('./indexheader.ejs') %>    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<script>
+				!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+				analytics.load("LioF9AH4FA5S2Ioit4CkQHeQgaRy6227");
+				analytics.page();
+				}}();
+			  </script>
 
 
-    <!-- main content start -->
 
-    <!-- bread crumb section start -->
-    <nav class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">login & register</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- bread crumb section end -->
+<!-- Global site tag (gtag.js) - Google Ads: 741046957 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-741046957"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <div class="login-register-area section-mb">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 col-md-12 mx-auto">
-                    <div class="login-register-wrapper">
-                        <div class="login-register-tab-list nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="active" data-bs-toggle="tab" href="#lg1">
-                                <h4>login/Register</h4>
-                            </a>
-                           
-                        </div>
+  gtag('config', 'AW-741046957');
+</script>
 
-                        <div class="tab-content">
-                            <div id="lg1" class="tab-pane show active">
-                                <div class="login-form-container">
-                                    <div class="login-register-form">
-                                        <form action="/login/verification" method="post">
-                                            <input type="number" name="number" placeholder="Mobile Number" required>
-                                           
-                                            <div class="button-box">
-                                               
-                                                <button type="submit" class="btn btn-dark">Login</button>
-                                                <!-- <a type="submit" class="btn btn-dark">
-                                                    <span>Login</span>
-                                                </a> -->
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="lg2" class="tab-pane">
-                                <div class="login-form-container">
-                                    <div class="login-register-form">
-                                        <form action="#" method="post">
-                                            <input type="text" name="user-name" placeholder="Username">
-                                            <input type="password" name="user-password" placeholder="Password">
-                                            <input name="user-email" placeholder="Email" type="email">
-                                            <div class="button-box">
-                                                <a href="#" class="btn btn-dark">
-                                                    <span>Register</span>
-                                                </a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<title>Delo Services - Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="User can login in delo services with their mobile number"/>
 
-    <!-- news letter section start -->
- 
-    <!-- news letter section end -->
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="assets/img/ashish1.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v3/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/Login_v3/css/main.css">
 
 
-    <!-- service section start -->
-    <section class="service-section section-mt section-mb">
-        <div class="container">
-            <div class="services">
-                <div class="row mb-n7">
 
-                    <div class="col-sm-6 col-lg-3 mb-7">
-                        <div class="service-item">
-                            <img class="service-icon" src="assets/images/icon/service1.png" alt="images_not_found">
-                            <h3 class="service-title">100% SECURE PAYMENTS</h3>
-                            <p>Moving your card details to a much more secured place</p>
-                        </div>
-                    </div>
+    <link rel="canonical" href="https://www.deloservices.com/login">
 
-                    <div class="col-sm-6 col-lg-3 mb-7">
-                        <div class="service-item">
-                            <img class="service-icon" src="assets/images/icon/service2.png" alt="images_not_found">
-                            <h3 class="service-title">TRUSTPAY</h3>
-                            <p>100% Payment Protection. Easy Return Policy</p>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3 mb-7">
-                        <div class="service-item">
-                            <img class="service-icon" src="assets/images/icon/service3.png" alt="images_not_found">
-                            <h3 class="service-title">HELP CENTER</h3>
-                            <p>GGot a question? Look no further.Browse our FAQs or submit your query here.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-3 mb-7">
-                        <div class="service-item">
-                            <img class="service-icon" src="assets/images/icon/service4.png" alt="images_not_found">
-                            <h3 class="service-title">Express Shipping</h3>
-                            <p>Fast, reliable delivery from global warehouses</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- service section end -->
+<!--===============================================================================================-->
 
 
-    <!-- main content end -->
+<link rel="shortcut icon" type="images/x-icon" href="/images/delofabicon.png">
 
-<%- include ('./indexfooter.ejs') %>    
-   
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('/images/login_image.png');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<a href="/"><img src="/images/Drop.png" style="width:50px;" alt="delo services"></a>
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+					
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+                    <input type="number" class="input100" id="number" placeholder="Enter Your Mobile Number">
+						<span class="focus-input100" data-placeholder="&#xf10b;"></span>
+					</div>
+					
+					
+
+					
+
+					<div class="container-login100-form-btn">
+						  <button type="button"  class="login100-form-btn" id='verify'><h1 style="font-size:18px">Get OTP</h1></button>
+					</div>
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="/Login_v3/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v3/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v3/vendor/bootstrap/js/popper.js"></script>
+	<script src="/Login_v3/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v3/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v3/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/Login_v3/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v3/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+    <script src="/Login_v3/js/main.js"></script>
+    <script src="/javascripts/jquery.js"></script>
+<script>
+$('#verify').click(function(){
+    if( $('#number').val()=="" || $('#number').val()==[] || $('#number').val().length<10 || $('#number').val().length>=11)
+{
+alert("Enter Correct Number");
+}
+else{
+    let number = $('#number').val()
+    $.post('/login/verification',{number},data=>{
+        window.location.href = "/login/verification";
+    })
+}
+})
+</script>
+
+<script type="text/javascript">
+	(function() {
+	window.__insp = window.__insp || [];
+	__insp.push(['wid', 1301399890]);
+	var ldinsp = function(){
+	if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1301399890&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+	setTimeout(ldinsp, 0);
+	})();
+	</script>
+  
+</body>
+</html>

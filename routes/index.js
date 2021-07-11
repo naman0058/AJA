@@ -7,6 +7,7 @@ const fs = require("fs");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log('d',req.session.usernumber)
  if(req.session.usernumber){
   var query = `select * from category order by id desc;`
   var query1 = `select * from category;`

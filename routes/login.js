@@ -26,15 +26,20 @@ router.post('/verification',(req,res)=>{
     let body = req.body
     // body['number'] = 91+req.body.number
     req.session.numberverify = 91+req.body.number
-    var otp =   Math.floor(100000 + Math.random() * 9000);
-    req.session.reqotp = otp;
-    res.render('otp',{msg : otp , anothermsg:''  })
+  
     //   console.log(req.body)
 
 
     
    })
 
+
+
+   router.get('/verification',(req,res)=>{
+    var otp =   Math.floor(100000 + Math.random() * 9000);
+    req.session.reqotp = otp;
+    res.render('otp',{msg : otp , anothermsg:''  })
+   })
 
 
 
@@ -49,19 +54,9 @@ pool.query(`select * from users where number = '${req.session.numberverify}'`,(e
   else if(result[0]) {
 
 
-    if(req.session.page){
-  pool.query(`update cart set usernumber = '${req.session.numberverify}' where usernumber = '${req.session.ipaddress}'`,(err,result)=>{
-    if(err) throw err;
-    else {
-      req.session.usernumber = req.session.numberverify;
-      res.redirect('/checkout')
-    }
-  })
-    }
-    else {
       req.session.usernumber = req.session.numberverify;
       res.redirect('/')
-    }
+  
 
 
   }
@@ -72,23 +67,10 @@ pool.query(`select * from users where number = '${req.session.numberverify}'`,(e
       else {
        
 
+        req.session.usernumber = req.session.numberverify;
+        res.redirect('/')
 
 
-
-
-        if(req.session.page){
-          pool.query(`update cart set usernumber = '${req.session.numberverify}' where usernumber = '${req.session.ipaddress}'`,(err,result)=>{
-            if(err) throw err;
-            else {
-              req.session.usernumber = req.session.numberverify;
-              res.redirect('/checkout')
-            }
-          })
-            } 
-            else {
-              req.session.usernumber = req.session.numberverify;
-              res.redirect('/')
-            }
 
 
 
