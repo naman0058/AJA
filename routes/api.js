@@ -7,12 +7,6 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = mm + '/' + dd + '/' + yyyy;
 
 
 router.get('/category',(req,res)=>{
@@ -111,6 +105,13 @@ router.get('/get-address',(req,res)=>{
 
   router.post('/create-enquiry',(req,res)=>{
     let body = req.body;
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+    body['current_date'] =  today
     console.log('body h',req.body)
     pool.query(`insert into enquiry set ?`,body,(err,result)=>{
         if(err) throw err;

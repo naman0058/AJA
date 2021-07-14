@@ -240,7 +240,7 @@
 			    					<div class="form-field">
 	          					<div class="select-wrap">
 	                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-	                      <select name="" id="" class="form-control">
+	                      <select name="" id="service_type" class="form-control">
 	                      	<option value="">Select services</option>
 	                        <option value="Breakdown/towing">Breakdown/towing</option>
 	                        <option value="Service appointment">Service appointment</option>
@@ -284,7 +284,7 @@
 									<div class="form-group">
 			    					<div class="input-wrap">
 			            	
-			            		<input type="text" class="form-control" placeholder="Full Name">
+			            		<input type="text" id="name" class="form-control" placeholder="Full Name">
 		            		</div>
 			    				</div>
 								</div>
@@ -292,24 +292,37 @@
 									<div class="form-group">
 			    					<div class="input-wrap">
 			            		
-			            		<input type="number" class="form-control" placeholder="Mobile Number">
+			            		<input type="number" id='number' class="form-control" placeholder="Mobile Number">
 		            		</div>
 			    				</div>
 								</div>
 
 
-								<div class="col-md-12">
+								<div class="col-md-6">
 									<div class="form-group">
 			    					<div class="input-wrap">
-			            		<div class="icon"><span class="fa fa-calendar"></span></div>
-			            		<input type="text" class="form-control appointment_date" placeholder="Date">
+			            	
+			            		<input type="text" id="date" class="form-control appointment_date" placeholder="Date">
 		            		</div>
 			    				</div>
 								</div>
+
+
+								
+								<div class="col-md-6">
+									<div class="form-group">
+			    					<div class="input-wrap">
+			            		
+			            		<input type="text" id="vehicle_number" class="form-control" placeholder="Vehicle Number">
+		            		</div>
+			    				</div>
+								</div>
+
+
 							
 								<div class="col-md-12">
 									<div class="form-group">
-			              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Write your issues here..."></textarea>
+			              <textarea name=""  cols="30" rows="7" id='issue' class="form-control" placeholder="Write your issues here..."></textarea>
 			            </div>
 								</div>
 								<div class="col-md-12">
@@ -477,142 +490,9 @@
       </div>
     </section>
 
-    <section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Price &amp; Plans</span>
-            <h2>Pricing</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-            	<span class="excerpt d-block">First PMS</span>
-	            <span class="price"><sup>$</sup> <span class="number">78.98</span></span>
-	            
-	            <div class="pricing-text">
-	              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-	            </div>
+  
 
-	            <a href="#" class="btn btn-secondary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-            	<span class="excerpt d-block">Engine Diagnostics</span>
-	            <span class="price"><sup>$</sup> <span class="number">83.75</span></span>
-	            
-	            <div class="pricing-text">
-	              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-	            </div>
-
-	            <a href="#" class="btn btn-secondary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-            	<span class="excerpt d-block">Tow Truck</span>
-	            <span class="price"><sup>$</sup> <span class="number">85.00</span></span>
-	            
-	            <div class="pricing-text">
-	              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-	            </div>
-
-	            <a href="#" class="btn btn-secondary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-6 col-lg-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-            	<span class="excerpt d-block">Car Wash</span>
-	            <span class="price"><sup>$</sup> <span class="number">30.50</span></span>
-	            
-	            <div class="pricing-text">
-	              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-	            </div>
-
-	            <a href="#" class="btn btn-secondary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-    	</div>
-    </section>
-
-    <section class="ftco-section ftco-no-pb">
-			<div class="container">
-				<div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Projects</span>
-            <h2>Done Projects</h2>
-          </div>
-        </div>
-			</div>
-			<div class="container-fluid px-md-0">
-				<div class="row no-gutters">
-          <div class="col-md-3 ftco-animate">
-            <div class="work img d-flex align-items-end" style="background-image: url(images/work-1.jpg);">
-            	<a href="images/work-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Engine</span>
-	              	<h2><a href="work-single.html">Engine Testing Complated</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 ftco-animate">
-            <div class="work img d-flex align-items-end" style="background-image: url(images/work-2.jpg);">
-            	<a href="images/work-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Oil Change</span>
-	              	<h2><a href="work-single.html">Change Oil Completed</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 ftco-animate">
-            <div class="work img d-flex align-items-end" style="background-image: url(images/work-3.jpg);">
-            	<a href="images/work-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Engine</span>
-	              	<h2><a href="work-single.html">Engine Diagnostics</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 ftco-animate">
-            <div class="work img d-flex align-items-end" style="background-image: url(images/work-4.jpg);">
-            	<a href="images/work-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Tire</span>
-	              	<h2><a href="work-single.html">Tire Change</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-			</div>
-		</section>	
+  	
 
     <footer class="footer ftco-section">
       <div class="container">
@@ -771,11 +651,35 @@
 
 
 $('.submit_enquiry').click(function(){
-	if($('#categoryid').val() == '' || $('#categoryid').val() == null )  alert('Select Vehicle Type')
-	else if($('#brandid').val() == '' || $('#brandid').val() == null )  alert('Select Brand')
-	if($('#modelid').val() == '' || $('#modelid').val() == null )  alert('Select modelid')
-	if($('#categoryid').val() == '' || $('#categoryid').val() == null )  alert('Select Vehicle Type')
-	if($('#categoryid').val() == '' || $('#categoryid').val() == null )  alert('Select Vehicle Type')
+
+    if($('#service_type').val() == '' || $('#service_type').val() == "null") alert('Select Services')
+
+	else if($('#categoryid').val() == '' || $('#categoryid').val() == "null" )  alert('Select Vehicle Type')
+	else if($('#brandid').val() == '' || $('#brandid').val() == "null" )  alert('Select Brand')
+	else if($('#modelid').val() == '' || $('#modelid').val() == "null" )  alert('Select Model')
+	else if($('#name').val() == '' || $('#name').val() == "null" )  alert('Enter Name')
+	else if($('#number').val() == '' || $('#number').val() == "null" )  alert('Enter Mobile Number')
+	else if($('#date').val() =='' || $('#data').val()=="null") alert('Select Date')
+	else if($('#vehicle_number').val() == '' || $('#vehicle_number').val() == "null") alert('Enter Vehicle Number')
+	else if($('#issue').val() == '' || $('#issue').val() == "null") alert('Type Your Issues')
+	else {
+
+    let categoryid = $('#categoryid').val()
+	let brandid = $('#brandid').val()
+	let modelid = $('#modelid').val()
+	let name = $('#name').val()
+	let number = $('#number').val()
+	let date = $('#date').val()
+	let vehicle_number = $('#vehicle_number').val()
+	let issue = $('#issue').val()
+	let service_type = $('#service_type').val()
+
+$.post('/api/create-enquiry',{categoryid,brandid,modelid,name,number,date,vehicle_number,issue,service_type},data=>{
+	alert('Your Enquiry Submitted Successfully Our Team Will Contact you soon.')
+})
+
+	}
+
 
 })
 

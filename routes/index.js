@@ -50,7 +50,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/order-history',(req,res)=>{
-  pool.query(`select * from booking where status = 'completed' order by id desc;`,(err,result)=>{
+  pool.query(`select * from enquiry where status = 'completed' order by id desc;`,(err,result)=>{
     if(err) throw err;
     else res.render('show-orders',{result:result})
   })
@@ -58,9 +58,10 @@ router.get('/order-history',(req,res)=>{
 
 
 router.get('/running-order',(req,res)=>{
-  pool.query(`select * from booking where status != 'completed' order by id desc;`,(err,result)=>{
+  pool.query(`select * from enquiry where status != 'completed' order by id desc;`,(err,result)=>{
     if(err) throw err;
-    else res.render('show-orders',{result:result})
+    //else res.json(result)
+     else res.render('show-orders',{result:result})
   })
 })
 
