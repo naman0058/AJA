@@ -225,21 +225,11 @@ router.post("/payment-initiate", (req, res) => {
 
 
 
-  router.post('/partner-registeration',(req,res)=>{
-    pool.query(`insert into partner set ?`,body,(err,result)=>{
-      if(err) throw err;
-      else res.json({
-        msg : 'success',
-        
-      })
-    })
-  })
-
 
 
 
   router.post('/partner-login',(req,res)=>{
-    pool.query(`select * from partner where number = '${req.body.number}'`,(err,result)=>{
+    pool.query(`select * from delivery where number = '${req.body.number}'`,(err,result)=>{
       if(err) throw err;
       else if(result[0]){
         
@@ -336,6 +326,48 @@ router.post('/enquiry/update/status',(req,res)=>{
 
 
 
+
+
+router.post('/partner-registeration',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'image1', maxCount: 1 },{ name: 'image2', maxCount: 1 }]),(req,res)=>{
+	let body = req.body
+
+    console.log('files data',req.files)
+
+    
+if(req.files.image[0]){
+  body['image'] = req.files.image[0].filename
+
+}
+
+  
+if(req.files.image1){
+    body['image1'] = req.files.image1[0].filename
+  }
+
+  
+if(req.files.image2){
+    body['image2'] = req.files.image2[0].filename
+  }
+
+console.log('body hai',req.body)
+   
+	pool.query(`insert into ${table} set ?`,body,(err,result)=>{
+		if(err) {
+            res.json({
+                status:500,
+                type : 'error',
+                description:err
+            })
+        }
+		else {
+            res.json({
+                status:200,
+                type : 'success',
+                description:'successfully added'
+            })
+        }
+	})
+})
 
 
 module.exports = router;
