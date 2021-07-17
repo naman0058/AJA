@@ -148,7 +148,7 @@
                 <div class="card-statistic-3">
                   <div class="card-icon card-icon-large"><i class="fa fa-money-bill-alt"></i></div>
                   <div class="card-content">
-                    <h4 class="card-title">Product</h4>
+                    <h4 class="card-title">Brand</h4>
                     <span><%=result[1][0].total%></span>
                     <div class="progress mt-1 mb-1" data-height="8">
                       <div class="progress-bar l-bg-green" role="progressbar" data-width="<%=result[1][0].total%>%" aria-valuenow="25"
@@ -166,88 +166,7 @@
 
         
          
-          <div class="row">
-            <div class="col-12 col-sm-12 col-lg-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4>Running Orders</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive table-invoice">
-                    <table class="table table-striped">
-                      <tr>
-                   
-                        <th>Customer Name</th>
-                        <th>Customer Number</th>
-                        <th>Product Name</th>
-                        <th>Address</th>
-                        <th>Progress</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        
-                      </tr>
-
-
-<% for(i=0;i<result[8].length;i++) { %>
-
-                      <tr>
-                       
-                        <td><%=result[8][i].name%></td>
-                        <td><%=result[8][i].number%></td>
-                        <td class="font-weight-600"><%=result[8][i].booking_id%></td>
-                        <td class="font-weight-600"><%=result[8][i].address%></td>
-                        <td class="font-weight-600"><%=result[8][i].status%></td>
-                       
-                        <td>Rs. <%=result[8][i].price%></td>
-
-
-
-                        <!-- <% if(result[i].status=='pending') { %>
-
-                          <td> <a href="/admin/dashboard/update-status?id=<%=result[i].id%>&status=Dispatch">Dispatch</a></td>
-                         
-                           <% } else if(result[i].status == 'Dispatch') { %>
-                            
-                             <td> <a href="/admin/dashboard/update-status?id=<%=result[i].id%>&status=Delieverd">Delieverd</a></td>
-                         
-                             <% } else { %> 
-
-                              <td> <a href="/admin/dashboard/update-status?id=<%=result[i].id%>&status=completed">Complete</a></td>
-
-                              <% } %> -->
-
-<% if(result[8][i].status=='pending') { %>
-
- <td> <a href="/admin/update-status?id=<%=result[8][i].id%>&status=Dispatch">Dispatch</a></td>
-
-  <% } else if(result[8][i].status=='Dispatch') { %>
-   
-    <td> <a href="/admin/update-status?id=<%=result[8][i].id%>&status=Delieverd">Delieverd</a></td>
-
-    <% } else { %> 
-
-      <td> <a href="/admin/update-status?id=<%=result[8][i].id%>&status=Completed">Completed</a></td>
-
-      <% } %>
-
-                        <td>
-                          <!-- <select class="form-control update_status"  id='<%=result[8][i].id%>'>
-                            <option value="-">Select Status</option>
-                            <option value="Dispatch">Dispatch</option>
-                            <option val>Completed</option>
-                          </select> -->
-                        </td>
-                      
-                           </tr>
-
-                           <% } %>
-                    
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         
         
         </section>
         <div class="settingSidebar">

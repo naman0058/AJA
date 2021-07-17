@@ -50,15 +50,26 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/order-history',(req,res)=>{
-  pool.query(`select * from enquiry where status = 'completed' order by id desc;`,(err,result)=>{
+  pool.query(`select e.*,
+  (select c.name from category c where c.id = e.categoryid) as categoryname,
+  (select b.name from brand b where b.id = e.brandid) as brandname,
+  (select m.name from model m where m.id = e.modelid) as modelname,
+  (select d.name from delivery d where d.number = e.assigned_number ) as assignedname
+  from enquiry e where e.status = 'completed' order by id desc;`,(err,result)=>{
     if(err) throw err;
-    else res.render('show-orders',{result:result})
+    //else res.json(result)
+     else res.render('show-orders',{result:result})
   })
 })
 
 
 router.get('/running-order',(req,res)=>{
-  pool.query(`select * from enquiry where status != 'completed' order by id desc;`,(err,result)=>{
+  pool.query(`select e.*,
+  (select c.name from category c where c.id = e.categoryid) as categoryname,
+  (select b.name from brand b where b.id = e.brandid) as brandname,
+  (select m.name from model m where m.id = e.modelid) as modelname,
+  (select d.name from delivery d where d.number = e.assigned_number ) as assignedname
+  from enquiry e where e.status != 'completed' order by id desc;`,(err,result)=>{
     if(err) throw err;
     //else res.json(result)
      else res.render('show-orders',{result:result})
@@ -646,6 +657,35 @@ router.post('/website-customization-insert',(req,res)=>{
       })
     }
   })
+})
+
+
+
+
+router.get('/about',(req,res)=>{
+  if(req.session.usernumber){
+    res.render('about',{login:true})
+
+  }
+  else{
+    res.render('about',{login:false})
+
+  }
+})
+
+
+
+
+
+router.get('/contact',(req,res)=>{
+  if(req.session.usernumber){
+    res.render('contact',{login:true})
+
+  }
+  else{
+    res.render('contact',{login:false})
+
+  }
 })
 
 module.exports = router;

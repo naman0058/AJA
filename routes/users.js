@@ -171,8 +171,8 @@ router.post('/update_image',upload.single('image'), (req, res) => {
 })
 
 
-router.get('/wishlist',(req,res)=>{
-	pool.query(`select c.* , (select p.name from product p where p.id = c.booking_id) as productname from cart c where c.usernumber = '${req.query.number}' and c.status is null`,(err,result)=>{
+router.get('/address',(req,res)=>{
+	pool.query(`select * from address where usernumber = '${req.query.number}'`,(err,result)=>{
 		if(err) throw err;
        // else res.json(result)
         else res.render('show-wishlist',{result:result})
@@ -202,9 +202,15 @@ router.get('/transacations',(req,res)=>{
 
 
 router.get('/orders',(req,res)=>{
-	pool.query(`select * from booking where number = '${req.query.number}' `,(err,result)=>{
-		if(err) throw err;
-        else res.render('show-orders',{result:result})
+    pool.query(`select e.*,
+    (select c.name from category c where c.id = e.categoryid) as categoryname,
+    (select b.name from brand b where b.id = e.brandid) as brandname,
+    (select m.name from model m where m.id = e.modelid) as modelname,
+    (select d.name from delivery d where d.number = e.assigned_number ) as assignedname
+    from enquiry e where e.number = '${req.query.number}' order by id desc;`,(err,result)=>{
+      if(err) throw err;
+     // else res.json(result)
+       else res.render('show-orders1',{result:result})
 	})
 })
 

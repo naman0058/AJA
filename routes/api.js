@@ -303,4 +303,39 @@ router.post('/update-status',(req,res)=>{
 
 
 
+
+
+
+
+
+router.post('/enquiry/update/status',(req,res)=>{
+  pool.query(`update enquiry set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+
+  if(err) {
+      res.json({
+          status:500,
+          type : 'error',
+          description:err
+      })
+  }
+  else {
+      res.json({
+          status:200,
+          type : 'success',
+          description:'successfully update'
+      })
+
+      
+  }
+
+})
+
+})
+
+
+
+
+
+
+
 module.exports = router;
