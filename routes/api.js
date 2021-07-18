@@ -151,7 +151,11 @@ router.post('/create-invoice',(req,res)=>{
 
 
   router.get('/invoice',(req,res)=>{
-      pool.query(`select * from invoice where number = '${req.query.number}'`,(err,result)=>{
+    var query = `select e.* , 
+    (select i.price from invoice i where i.bookingid = e.id) as totalprice,
+    (select i.description from invoice i where i.bookingid = e.id) as invoice_description
+    from enquiry e where e.id = '${req.query.id}'`
+      pool.query(query,(err,result)=>{
           if(err) throw err;
           else res.json(result)
       })
@@ -261,7 +265,7 @@ else {
 
 
   router.get('/partner_enquiry',(req,res)=>{
-    pool.query(`select * from enquiry where assignednumber = '${req.query.number}' order by id desc`,(err,result)=>{
+    pool.query(`select * from enquiry where assigned_number = '${req.query.number}' order by id desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })
