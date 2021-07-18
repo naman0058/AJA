@@ -115,22 +115,14 @@ today = mm + '/' + dd + '/' + yyyy;
     console.log('body h',req.body)
 
     
-    pool.query(`select id from enquiry where bookingid = '${req.body.bookingid}'`,(err,result)=>{
-      if(err) throw err;
-      else if(result[0]){
-        res.json({
-          msg : 'already generated'
-        })
-      }
-      else {
+    
         pool.query(`insert into enquiry set ?`,body,(err,result)=>{
           if(err) throw err;
           else res.json({
               msg : 'success'
           })
       })
-      }
-    })
+      
 
 
   
