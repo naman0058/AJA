@@ -407,7 +407,7 @@ pool.query(`select * from delivery where number = '${req.body.number}'`,(err,res
 
 
 
-router.get('/api/blog/all',(req,res)=>{
+router.get('/blog/all',(req,res)=>{
   pool.query(`select * from blog order by id desc`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
@@ -425,6 +425,12 @@ router.post('/single-blog',(req,res)=>{
 
 
 
+router.get('/blog/delete',(req,res)=>{
+  pool.query(`delete from blog where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
 
 
 module.exports = router;
