@@ -44,7 +44,7 @@
     }
 
     $('#show').click(function(){
-    $.getJSON(`/model/all`, data => {
+    $.getJSON(`/api/blog/all`, data => {
         console.log(data)
         services = data
         makeTable(data)

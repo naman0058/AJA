@@ -405,8 +405,21 @@ pool.query(`select * from delivery where number = '${req.body.number}'`,(err,res
 
 
 
+router.get('/api/blog/all',(req,res)=>{
+  pool.query(`select * from blog order by id desc`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
 
 
+
+router.get('/single-blog',(req,res)=>{
+  pool.query(`select * from blog where id='${req.body.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
 
 
 

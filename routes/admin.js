@@ -2,6 +2,8 @@ var express = require('express');
 
 var router = express.Router();
 var pool = require('./pool')
+var upload = require('./multer');
+
 var table = 'admin';
 const request = require('request');
 
@@ -108,18 +110,31 @@ router.get('/update-status',(req,res)=>{
 
 
 router.get('/approved-vendor',(req,res)=>{
-    pool.query(`select * from delivery where status =  'approved' order by id desc`,(err,result)=>{
-        if(err) throw err;
-        else res.render('approved-vendor',{result})
-    })
+    if(req.session.adminid){
+        pool.query(`select * from delivery where status =  'approved' order by id desc`,(err,result)=>{
+            if(err) throw err;
+            else res.render('approved-vendor',{result})
+        })
+    }
+    else {
+        res.redirect('/admin')
+    }
+   
 })
 
 
 router.get('/requested-vendor',(req,res)=>{
-    pool.query(`select * from delivery where status !=  'approved' order by id desc`,(err,result)=>{
-        if(err) throw err;
-        else res.render('requested-vendor',{result})
-    })
+    if(req.session.adminid){
+
+        pool.query(`select * from delivery where status !=  'approved' order by id desc`,(err,result)=>{
+            if(err) throw err;
+            else res.render('requested-vendor',{result})
+        })
+    }
+    else{
+        res.redirect('/admin')
+    }
+ 
 })
 
 
@@ -139,6 +154,44 @@ router.get('/reject',(req,res)=>{
     })
 })
 
+
+
+router.get('/blog',(req,res)=>{
+    if(req.session.adminid) {
+        res.render('blog')
+    }
+    else{
+      res.redirect('/admin')
+    } 
+})
+
+
+
+
+
+router.post('/blog/insert',upload.single('image'),(req,res)=>{
+	let body = req.body
+    console.log(req.body)
+    body['image'] = req.file.filename;
+    
+	pool.query(`insert into blog set ?`,body,(err,result)=>{
+		if(err) {
+            res.json({
+                status:500,
+                type : 'error',
+                description:err
+            })
+        }
+		else {
+            res.json({
+                status:200,
+                type : 'success',
+                description:'successfully added'
+            })
+            
+        }
+	})
+})
 
 
 module.exports = router;
