@@ -364,23 +364,40 @@ if(req.files.image2){
   }
 
 console.log('body hai',req.body)
+
+
+
+pool.query(`select * from delivery where number = '${req.body.number}'`,(err,result)=>{
+  if(err) throw err;
+  else if(result[0]){
+   res.json({
+     status : 500,
+     type:'already regiestered',
+     description : 'registered already'
+   })
+  }
+  else{
+    pool.query(`insert into delivery set ?`,body,(err,result)=>{
+      if(err) {
+              res.json({
+                  status:500,
+                  type : 'error',
+                  description:err
+              })
+          }
+      else {
+              res.json({
+                  status:200,
+                  type : 'success',
+                  description:'successfully added'
+              })
+          }
+    })
+  }
+})
+
    
-	pool.query(`insert into delivery set ?`,body,(err,result)=>{
-		if(err) {
-            res.json({
-                status:500,
-                type : 'error',
-                description:err
-            })
-        }
-		else {
-            res.json({
-                status:200,
-                type : 'success',
-                description:'successfully added'
-            })
-        }
-	})
+
 })
 
 
