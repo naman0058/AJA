@@ -355,7 +355,7 @@ if(req.files.image2){
 
 console.log('body hai',req.body)
    
-	pool.query(`insert into ${table} set ?`,body,(err,result)=>{
+	pool.query(`insert into delivery set ?`,body,(err,result)=>{
 		if(err) {
             res.json({
                 status:500,
