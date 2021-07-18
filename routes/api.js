@@ -124,7 +124,9 @@ today = mm + '/' + dd + '/' + yyyy;
 
 
   router.get('/myenquiry',(req,res)=>{
-      pool.query(`select * from enquiry where number = '${req.query.number}' order by id desc`,(err,result)=>{
+      pool.query(`select e.* , 
+      (select i.id from invoice i where i.bookingid = e.id) as isinvoice
+      from enquiry e where e.number = '${req.query.number}' order by id desc`,(err,result)=>{
           if(err) throw err;
           else res.json(result)
       })
