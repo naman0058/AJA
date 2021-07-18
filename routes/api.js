@@ -414,7 +414,7 @@ router.get('/api/blog/all',(req,res)=>{
 
 
 
-router.get('/single-blog',(req,res)=>{
+router.post('/single-blog',(req,res)=>{
   pool.query(`select * from blog where id='${req.body.id}'`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
