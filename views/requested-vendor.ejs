@@ -1,0 +1,100 @@
+<%- include ('./adminheader.ejs') %>
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12">
+             
+            
+                <div class="table-responsive" style="margin-top: 20px;">
+
+     
+                    <table id="report-table" class="table table-bordered table-striped mb-0">
+                    <thead>
+                    <tr>
+                    
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Address</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Pincode</th>
+                    <th>Image</th>
+                  <th>Aadhar Card</th>
+                  <th>Pan Card</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+
+
+                        <% for(i=0;i<result.length;i++){ %>
+                  <tr>
+                    <td><%=result[i].name%></td>
+                    <td><%=result[i].number%></td>
+                    <td><%=result[i].address%></td>
+                    <td><%=result[i].state%></td>
+                    <td><%=result[i].city%></td>
+                    <td><%=result[i].pincode%></td>
+                    <td><img src="http://ajaautomobile.com/images/<%=result[i].image%>" style="width: 100px;"></td>
+                    <td><img src="http://ajaautomobile.com/images/<%=result[i].image1%>" style="width: 100px;"></td>
+                    <td><img src="http://ajaautomobile.com/images/<%=result[i].image2%>" style="width: 100px;"></td>
+                    <td><a href="/admin/approved?id=<%=result[i].id%>"><button type="button" class="btn btn-primary assign" id="<%=result[i].id%>">Approved</button></a></td>
+                    <td><a href="/admin/reject?id=<%=result[i].id%>"><button type="button" class="btn btn-danger  assign" id="<%=result[i].id%>">Reject</button></a></td>
+
+                   
+ 
+
+
+
+
+                  
+                    </tr>
+
+<% } %>
+
+                    </tbody>
+                    </table>
+                    </div>
+
+
+
+    
+    
+    
+   
+            
+              </div>
+             
+            </div>
+          </div>
+        </section>
+        <div class="settingSidebar">
+          <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
+          </a>
+       
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- General JS Scripts -->
+  <script src="/light/assets/js/app.min.js"></script>   
+  <!-- JS Libraies -->
+  <!-- Page Specific JS File -->
+  <!-- Template JS File -->
+  <script src="/light/assets/js/scripts.js"></script>
+  <!-- Custom JS File -->
+  <script src="/light/assets/js/custom.js"></script>
+
+
+  <script src="/javascripts/users.js"></script>
+
+  
+ 
+
+</body>
+
+
+</html>

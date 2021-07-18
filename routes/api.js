@@ -244,7 +244,7 @@ if(result[0].status == 'approved'){
 }
 else {
     res.json({
-      msg : 'reject'
+      msg : 'pending'
     })
 }
 
@@ -344,7 +344,7 @@ router.post('/enquiry/update/status',(req,res)=>{
 
 router.post('/partner-registeration',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'image1', maxCount: 1 },{ name: 'image2', maxCount: 1 }]),(req,res)=>{
 	let body = req.body
-
+body['status'] = 'pending'
     console.log('files data',req.files)
 
     
@@ -382,6 +382,17 @@ console.log('body hai',req.body)
         }
 	})
 })
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

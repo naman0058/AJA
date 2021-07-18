@@ -107,9 +107,37 @@ router.get('/update-status',(req,res)=>{
 
 
 
+router.get('/approved-vendor',(req,res)=>{
+    pool.query(`select * from delivery where status =  'approved' order by id desc`,(err,result)=>{
+        if(err) throw err;
+        else res.render('approved-vendor',{result})
+    })
+})
+
+
+router.get('/requested-vendor',(req,res)=>{
+    pool.query(`select * from delivery where status !=  'approved' order by id desc`,(err,result)=>{
+        if(err) throw err;
+        else res.render('requested-vendor',{result})
+    })
+})
 
 
 
+router.get('/approved',(req,res)=>{
+    pool.query(`update delivery set status = 'approved' where id = '${req.query.id}'`,(err,result)=>{
+        if(err) throw err;
+        else res.redirect('/admin/requested-vendor')
+    })
+})
+
+
+router.get('/reject',(req,res)=>{
+    pool.query(`delete from delivery where id = '${req.query.id}'`,(err,result)=>{
+        if(err) throw err;
+        else res.redirect('/admin/requested-vendor')
+    })
+})
 
 
 
