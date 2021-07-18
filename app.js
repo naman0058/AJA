@@ -21,6 +21,7 @@ var pincode = require('./routes/pincode');
 var product = require('./routes/product');
 var api = require('./routes/api');
 var login = require('./routes/login');
+var stockapi = require('./routes/stockapi');
 
 var app = express();
 
@@ -63,6 +64,7 @@ app.use('/pincode',pincode);
 app.use('/model',product);
 app.use('/api',api);
 app.use('/login',login);
+app.use('/stockapi',stockapi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

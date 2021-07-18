@@ -140,6 +140,9 @@ today = mm + '/' + dd + '/' + yyyy;
 
   router.get('/myenquiry',(req,res)=>{
       pool.query(`select e.* , 
+      (select c.name from category c where c.id = e.categoryid) as categoryname,
+      (select b.name from brand b where b.id = e.brandid) as brandname,
+      (select m.name from model m where m.id = e.modelid) as modelname,
       (select i.id from invoice i where i.bookingid = e.id) as isinvoice
       from enquiry e where e.number = '${req.query.number}' order by id desc`,(err,result)=>{
           if(err) throw err;
@@ -168,6 +171,7 @@ router.post('/create-invoice',(req,res)=>{
 
 
   router.get('/invoice',(req,res)=>{
+    
     var query = `select e.* , 
     (select i.price from invoice i where i.bookingid = e.id) as totalprice,
     (select i.description from invoice i where i.bookingid = e.id) as invoice_description
@@ -302,7 +306,13 @@ router.get('/partner_history',(req,res)=>{
 
 
 router.get('/single-enquiry',(req,res)=>{
-  pool.query(`select * from enquiry where id = '${req.query.id}'`,(err,result)=>{
+ 
+  pool.query(` select e.*,
+  (select c.name from category c where c.id = e.categoryid) as categoryname,
+  (select b.name from brand b where b.id = e.brandid) as brandname,
+  (select m.name from model m where m.id = e.modelid) as modelname,
+  (select d.name from delivery d where d.number = e.assigned_number ) as assignedname
+  from enquiry e where e.id = '${req.query.id}' ;`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })
