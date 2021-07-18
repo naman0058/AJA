@@ -265,10 +265,20 @@ else {
 
 
   router.get('/partner_enquiry',(req,res)=>{
-    pool.query(`select * from enquiry where assigned_number = '${req.query.number}' order by id desc`,(err,result)=>{
+    pool.query(`select * from enquiry where assigned_number = '${req.query.number}' and status!= 'completed' order by id desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })
+})
+
+
+
+
+router.get('/partner_history',(req,res)=>{
+  pool.query(`select * from enquiry where assigned_number = '${req.query.number}' and status = 'completed' order by id desc`,(err,result)=>{
+      if(err) throw err;
+      else res.json(result)
+  })
 })
 
 
