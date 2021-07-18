@@ -106,6 +106,7 @@ router.get('/get-address',(req,res)=>{
   router.post('/create-enquiry',(req,res)=>{
     let body = req.body;
     var today = new Date();
+    console.log(req.body)
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
