@@ -688,4 +688,22 @@ router.get('/contact',(req,res)=>{
   }
 })
 
+
+
+
+
+
+router.get('/blog',(req,res)=>{
+  if(req.session.usernumber){
+    res.render('blog',{login:true})
+
+  }
+  else{
+    res.render('blog',{login:false})
+
+  }
+})
+
+
+
 module.exports = router;

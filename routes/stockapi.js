@@ -27,6 +27,25 @@ router.get('/screenshot',(req,res)=>{
 
 
 
+router.get('/intraday',(req,res)=>{
+    pool.query(`select * from intraday order by id desc limit 20`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+})
+
+
+
+router.get('/delivery',(req,res)=>{
+    pool.query(`select * from intraday order by id desc limit 20`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+})
+
+
+
+
 
 
 module.exports = router;
