@@ -4,13 +4,14 @@ require('dotenv').config()
 
 const pool = mysql.createPool({
  
- host : 'db-mysql-blr1-05486-do-user-9022348-0.b.db.ondigitalocean.com',
-   user: 'doadmin',
-    password : 'm8wcz9akv2dbl1jy',
+ host : 'localhost',
+   user: 'root',
+    password : '123',
     database: 'AJA',
-    port:'25060' ,
+    port:'3306' ,
     multipleStatements: true
   })
 
 
 module.exports = pool;
+

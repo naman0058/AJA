@@ -22,6 +22,8 @@ var product = require('./routes/product');
 var api = require('./routes/api');
 var login = require('./routes/login');
 var stockapi = require('./routes/stockapi');
+var main_category = require('./routes/main_category');
+var blog_category = require('./routes/blog_category');
 
 var app = express();
 
@@ -65,6 +67,8 @@ app.use('/model',product);
 app.use('/api',api);
 app.use('/login',login);
 app.use('/stockapi',stockapi);
+app.use('/main_category',main_category)
+app.use('/blog_category',blog_category);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

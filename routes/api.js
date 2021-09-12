@@ -8,6 +8,13 @@ const fetch = require("node-fetch");
 
 
 
+router.get('/main_category',(req,res)=>{
+  pool.query(`select * from main_category`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
 
 router.get('/category',(req,res)=>{
 	pool.query(`select * from category order by name`,(err,result)=>{
