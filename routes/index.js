@@ -11,13 +11,8 @@ router.get('/', function(req, res, next) {
  if(req.session.usernumber){
   var query = `select * from category order by id desc;`
   var query1 = `select * from category;`
-  var query2=` SELECT *
-  FROM
-   (SELECT *,
-                 ROW_NUMBER() OVER (PARTITION BY categoryid ORDER BY id DESC) as country_rank
-     FROM product) ranked
-  WHERE country_rank <= 10;`
-  pool.query(query+query1+query2,(err,result)=>{
+
+  pool.query(query+query1,(err,result)=>{
     if(err) throw err;
     else  res.render('index', { title: 'Express',result,login:true });
   })
@@ -25,13 +20,8 @@ router.get('/', function(req, res, next) {
  else{
   var query = `select * from category order by id desc;`
   var query1 = `select * from category;`
-  var query2=` SELECT *
-  FROM
-   (SELECT *,
-                 ROW_NUMBER() OVER (PARTITION BY categoryid ORDER BY id DESC) as country_rank
-     FROM product) ranked
-  WHERE country_rank <= 10;`
-  pool.query(query+query1+query2,(err,result)=>{
+
+  pool.query(query+query1,(err,result)=>{
     if(err) throw err;
     else  res.render('index', { title: 'Express',result,login:false });
   })

@@ -44,7 +44,7 @@
     }
 
     $('#show').click(function(){
-    $.getJSON(`/api/blog/all`, data => {
+    $.getJSON(`/model/all`, data => {
         console.log(data)
         services = data
         makeTable(data)
@@ -66,11 +66,13 @@
     <table id="myTable" class="table table-bordered table-striped mb-0">
     <thead>
     <tr>
-    <th>Written By</th>
+    <th>Model Name</th>
 
-    <th>Short Description</th>
+    <th>Catgeory Name</th>
 
+    <th>Brand Name</th>
     <th>Image</th>
+
 
     
     <th>Option</th>
@@ -84,15 +86,21 @@
 
     <td>${item.name}</td>
 
-    <td>${item.short_description}</td>
+    <td>${item.categoryname}</td>
+
+    <td>${item.brandname}</td>
+
 
   
     <td>
     <img src="/images/${item.image}" class="img-fluid img-radius wid-40" alt="" style="width:50px;height:50px">
     </td>
     <td>
-        
-    <a href="#!" class="btn btn-danger btn-sm deleted" id="${item.id}"><i class="feather icon-trash-2"></i>&nbsp;Delete </a>
+
+
+     <a href="#!" class="btn btn-info btn-sm edits" id="${item.id}"><i class="feather icon-edit"></i>&nbsp;Edit </a>
+<a href="#!" class="btn btn-info btn-sm updateimage"  id="${item.id}"><i class="feather icon-edit"></i>&nbsp;Edit Image </a>
+<a href="#!" class="btn btn-danger btn-sm deleted" id="${item.id}"><i class="feather icon-trash-2"></i>&nbsp;Delete </a>   
     </td>
 
     </tr>`
@@ -113,7 +121,7 @@
 
     $('#result').on('click', '.deleted', function () {
         const id = $(this).attr('id')
-        $.get(`/api/blog/delete`, { id }, data => {
+        $.get(`/model/delete`, { id }, data => {
             refresh()
         })
     })
