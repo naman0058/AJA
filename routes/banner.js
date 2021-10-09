@@ -110,13 +110,6 @@ router.post('/update_image',upload.single('image'), (req, res) => {
     let body = req.body;
     body['image'] = req.file.filename
 
-
-    pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
-        if(err) throw err;
-        else {
-            fs.unlinkSync(`public/images/${result[0].image}`); 
-
-
  pool.query(`update ${table} set ? where id = ?`, [req.body, req.body.id], (err, result) => {
         if(err) {
             res.json({
@@ -126,21 +119,9 @@ router.post('/update_image',upload.single('image'), (req, res) => {
             })
         }
         else {
-            // res.json({
-            //     status:200,
-            //     type : 'success',
-            //     description:'successfully update'
-            // })
-
             res.redirect('/banner')
         }
     })
-
-
-        }
-    })
-
-  
    
 })
 

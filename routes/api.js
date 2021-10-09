@@ -153,7 +153,12 @@ today = yyyy + '/' + mm + '/' + dd;
   
 
 
- 
+ router.get('/banner',(req,res)=>{
+   pool.query(`select * from banner where type = '${req.body.type}' order by id desc`,(err,result)=>{
+     if(err) throw err;
+     else res.json(result)
+   })
+ })
 
 
 
