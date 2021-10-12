@@ -463,4 +463,62 @@ router.get('/blog/delete',(req,res)=>{
 })
 
 
+
+
+
+
+
+
+
+
+router.post('/save-user',(req,res)=>{
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+  let body = req .body
+  body['date'] = today
+    pool.query(`select * from users where number  = '${req.body.number}'`,(err,result)=>{
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else if(result[0]) {
+        res.json({
+            status : 100,
+            type:'success',
+            description:'successfully registered'
+
+        })
+      }
+      else{
+       pool.query(`insert into users set ?`,body,(err,result)=>{
+           if(err) {
+              res.json({
+                  status:500,
+                  type : 'error',
+                  description:err
+              })
+           }
+           else {
+              res.json({
+                  status:200,
+                  type : 'success',
+                  description:'successfully registered'
+              })
+           }
+       })
+      }
+  })
+     
+
+})
+
+
+
 module.exports = router;
