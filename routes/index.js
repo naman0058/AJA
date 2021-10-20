@@ -669,11 +669,11 @@ router.get('/about',(req,res)=>{
 
 router.get('/contact',(req,res)=>{
   if(req.session.usernumber){
-    res.render('contact',{login:true})
+    res.render('contact',{login:true,type:''})
 
   }
   else{
-    res.render('contact',{login:false})
+    res.render('contact',{login:false,type:''})
 
   }
 })
@@ -683,17 +683,125 @@ router.get('/contact',(req,res)=>{
 
 
 
-router.get('/blog',(req,res)=>{
+// router.get('/blog',(req,res)=>{
+//   if(req.session.usernumber){
+//     res.render('blog',{login:true})
+
+//   }
+//   else{
+//     res.render('blog',{login:false})
+
+//   }
+// })
+
+
+
+router.get('/blogs',(req,res)=>{
   if(req.session.usernumber){
-    res.render('blog',{login:true})
+    pool.query(`select * from blog order by id desc`,(err,result)=>{
+      if(err) throw err;
+      else res.render('blogs',{login:true,result})
+    
+    })
 
   }
   else{
-    res.render('blog',{login:false})
-
-  }
+    pool.query(`select * from blog order by id desc`,(err,result)=>{
+      if(err) throw err;
+      else res.render('blogs',{login:false,result} )
+    
+    })
+   }
 })
 
 
+router.get('/single-blog',(req,res)=>{
+  if(req.session.usernumber){
+    pool.query(`select * from blog where id = '${req.query.id}'`,(err,result)=>{
+      if(err) throw err;
+      else res.render('single_blog',{login:true,result:result})
+    })
+
+  }
+  else{
+    pool.query(`select * from blog where id = '${req.query.id}'`,(err,result)=>{
+      if(err) throw err;
+      else res.render('single_blog',{login:false,result:result})
+    })
+   }
+})
+
+
+router.post('/single-blog',(req,res)=>{
+  pool.query(`select * from blog where id = '${req.body.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.post('/contact',(req,res)=>{
+
+  let body = req.body
+
+  if(req.session.usernumber){
+    pool.query(`insert into contact set ?`,body,(err,result)=>{
+      if(err) {
+              res.json({
+                  status:500,
+                  type : 'error',
+                  description:err
+              })
+          }
+      else {
+        // res.redirect('/contact')
+               res.render('contact',{type:'Your Enquiry has been submitted successfully. Oue team will contact you soon',login:true})
+              
+          }
+    })
+  }
+
+  else{
+    pool.query(`insert into contact set ?`,body,(err,result)=>{
+      if(err) {
+              res.json({
+                  status:500,
+                  type : 'error',
+                  description:err
+              })
+          }
+      else {
+        // res.redirect('/contact')
+               res.render('contact',{type:'Your Enquiry has been submitted successfully. Oue team will contact you soon',login:false})
+              
+          }
+    })
+
+  }
+
+  // res.json(req.body)
+ 
+})
+
+
+
+router.get('/appointment',(req,res)=>{
+  req.session.usernumber = '9582172786'
+  if(req.session.usernumber){
+    pool.query(`select e.* , 
+    (select c.name from category c where c.id = e.categoryid) as categoryname,
+    (select b.name from brand b where b.id = e.brandid) as brandname,
+    (select m.name from model m where m.id = e.modelid) as modelname,
+    (select i.id from invoice i where i.bookingid = e.id) as isinvoice
+    from enquiry e where number = '${req.session.usernumber}' order by id desc`,(err,result)=>{
+  if(err) throw err;
+   else res.render('myappointment',{login:true,result:result})
+  // else res.json(result)
+})
+  }
+  else{
+res.redirect('/login')    
+  }
+})
 
 module.exports = router;

@@ -169,9 +169,13 @@ router.get('/blog',(req,res)=>{
 
 
 
-router.post('/blog/insert',(req,res)=>{
+router.post('/blog/insert',upload.single('image'),(req,res)=>{
 	let body = req.body
-    console.log(req.body)
+    console.log('body aayi ',req.file)
+    console.log('body aayi ',req.body)
+
+
+    body['image'] = req.file.filename;
   
 	pool.query(`insert into blog set ?`,body,(err,result)=>{
 		if(err) {
@@ -180,6 +184,7 @@ router.post('/blog/insert',(req,res)=>{
                 type : 'error',
                 description:err
             })
+            // console.log(err)
         }
 		else {
             res.json({
@@ -194,7 +199,7 @@ router.post('/blog/insert',(req,res)=>{
 
 
 router.get('/blog/all',(req,res)=>{
-    pool.query(`select b.* , (select c.name from category c where c.id = b.categoryid) as categoryname from blog b order by id desc`,(err,result)=>{
+    pool.query(`select * from blog b order by id desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })

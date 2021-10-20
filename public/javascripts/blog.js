@@ -48,7 +48,7 @@ function makeTable(categories){
 <thead>
 <tr>
 
-<th>Category</th>
+<th>Name</th>
 <th>Description</th>
 
 <th>Options</th>
@@ -58,7 +58,7 @@ function makeTable(categories){
 
 $.each(categories,(i,item)=>{
 table+=`<tr>
-<td>${item.categoryname}</td>
+<td>${item.name}</td>
 <td>${item.description}</td>
 
 

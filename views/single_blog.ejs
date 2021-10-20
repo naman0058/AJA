@@ -1,0 +1,59 @@
+
+
+<%- include ('./header.ejs') %>
+
+
+
+
+    <!-- END nav -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/<%=result[0].image%>');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+          <div class="col-md-9 ftco-animate pb-5">
+              </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 ftco-animate">
+          
+           <div id="result"></div> 
+           
+<input type="hidden" id='hidden_id' value="<%=result[0].id%>">
+
+           
+
+          </div> <!-- .col-md-8 -->
+      
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+  
+
+<%- include ('./indexfooter.ejs') %>
+
+<script>
+    let id = $('#hidden_id').val()
+    $.post('/single-blog',{id},data=>{
+        console.log(data)
+      maketable(data)
+    })
+
+    function maketable(data){
+        let table = `<div>
+            <h2 class="mb-3">${data[0].name}</h2>
+            <p>${data[0].description}</p>
+            
+            </div>
+            `
+            $('#result').html(table)
+    }
+    // alert(id)
+</script>
+

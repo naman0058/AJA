@@ -1,0 +1,67 @@
+
+
+<%- include ('./header.ejs') %>
+
+
+
+
+<!-- END nav -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/4.jpg');" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text align-items-end">
+      <div class="col-md-9 ftco-animate pb-5">
+          </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section ftco-degree-bg">
+  <div class="container">
+    <div class="row">
+
+        <% for(i=0;i<result.length;i++){ %>
+
+        <div class="col-sm-6" style="margin-top: 20px;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%=result[i].service_type%></h5>
+              <p class="card-text">Brand : <%=result[i].brandname%></p>
+              <p class="card-text">Model : <%=result[i].modelname%></p>
+
+              <p class="card-text">Issue : <%=result[i].issue%></p>
+              <p class="card-text">Date : <%=result[i].date%></p>
+
+              <a href="#" class="btn btn-primary">Vehicle No. <%=result[i].vehicle_number%></a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+    
+      </div>
+  </div>
+</section> <!-- .section -->
+
+
+
+<%- include ('./indexfooter.ejs') %>
+
+<script>
+let id = $('#hidden_id').val()
+$.post('/single-blog',{id},data=>{
+    console.log(data)
+  maketable(data)
+})
+
+function maketable(data){
+    let table = `<div>
+        <h2 class="mb-3">${data[0].name}</h2>
+        <p>${data[0].description}</p>
+        
+        </div>
+        `
+        $('#result').html(table)
+}
+// alert(id)
+</script>
+
