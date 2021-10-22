@@ -144,6 +144,7 @@ today = yyyy + '/' + mm + '/' + dd;
       (select c.name from category c where c.id = e.categoryid) as categoryname,
       (select b.name from brand b where b.id = e.brandid) as brandname,
       (select m.name from model m where m.id = e.modelid) as modelname,
+      (select m.image from model m where m.id = e.modelid) as modelimage
       (select i.id from invoice i where i.bookingid = e.id) as isinvoice
       from enquiry e where e.number = '${req.query.number}' order by id desc`,(err,result)=>{
           if(err) throw err;
