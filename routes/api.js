@@ -411,6 +411,7 @@ pool.query(`select * from delivery where number = '${req.body.number}'`,(err,res
   else{
     pool.query(`insert into delivery set ?`,body,(err,result)=>{
       if(err) {
+        console.log('error',err);
               res.json({
                   status:500,
                   type : 'error',
