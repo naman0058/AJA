@@ -120,6 +120,7 @@ var yyyy = today.getFullYear();
 
 today = yyyy + '/' + mm + '/' + dd;
     body['current_date'] =  today
+    body['status'] = 'pending'
     console.log('body h',req.body)
 
     
@@ -168,9 +169,15 @@ router.post('/create-invoice',(req,res)=>{
     console.log('body h',req.body)
     pool.query(`insert into invoice set ?`,body,(err,result)=>{
         if(err) throw err;
-        else res.json({
+        else{
+          pool.query(`update enquiry set price = '${req.body.price}' where id = '${req.body.bookingid}'`,(err,result)=>{
+            if(err) throw err;
+           else res.json({
             msg : 'success'
-        })
+              })
+          })
+        }
+        
     })
   })
 
