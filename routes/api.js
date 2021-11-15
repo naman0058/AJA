@@ -278,7 +278,7 @@ if(result[0].status == 'approved'){
 }
 else {
     res.json({
-      msg : 'pending'
+      msg : 'approved'
     })
 }
 
