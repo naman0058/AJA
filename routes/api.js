@@ -285,7 +285,9 @@ else {
       }
       else {
   res.json({
-    msg : 'you are not registered'
+    // msg : 'you are not registered'
+    msg : 'approved'
+
   })
       }
     })
