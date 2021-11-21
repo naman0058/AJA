@@ -532,4 +532,58 @@ today = mm + '/' + dd + '/' + yyyy;
 
 
 
+
+
+router.post('/contact',(req,res)=>{
+
+  let body = req.body
+  pool.query(`insert into contact set ?`,body,(err,result)=>{
+      if(err) {
+              res.json({
+                  status:500,
+                  type : 'error',
+                  description:err
+              })
+          }
+      else {
+        res.json({
+          status:500,
+          type : 'success',
+          description:'success'
+      })
+              
+          }
+    })
+  
+
+})
+
+
+
+router.post('/rating-submit',(req,res)=>{
+
+  let body = req.body
+  pool.query(`insert into rating set ?`,body,(err,result)=>{
+      if(err) {
+              res.json({
+                  status:500,
+                  type : 'error',
+                  description:err
+              })
+          }
+      else {
+        res.json({
+          status:500,
+          type : 'success',
+          description:'success'
+      })
+              
+          }
+    })
+  
+
+})
+
+
+
 module.exports = router;
