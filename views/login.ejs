@@ -21,13 +21,13 @@
   gtag('config', 'AW-741046957');
 </script>
 
-	<title>Delo Services - Login</title>
+	<title>AJA - Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="User can login in delo services with their mobile number"/>
+	<meta name="description" content="User can login in aja with their mobile number"/>
 
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="assets/img/ashish1.png"/>
+	<link rel="icon" type="image/png" href="/images/logo.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/Login_v3/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -50,12 +50,11 @@
 
 
 
-    <link rel="canonical" href="https://www.deloservices.com/login">
 
 <!--===============================================================================================-->
 
 
-<link rel="shortcut icon" type="images/x-icon" href="/images/delofabicon.png">
+<link rel="shortcut icon" type="images/x-icon" href="/images/logo.png">
 
 </head>
 <body>
@@ -65,7 +64,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-logo">
-						<a href="/"><img src="/images/Drop.png" style="width:50px;" alt="delo services"></a>
+						<a href="/"><img src="/images/logo.png" style="width:100px;border-radius: 50%;" alt="AJA Logo"></a>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
@@ -118,7 +117,9 @@ $('#verify').click(function(){
 alert("Enter Correct Number");
 }
 else{
+
     let number = $('#number').val()
+	
     $.post('/login/verification',{number},data=>{
         window.location.href = "/login/verification";
     })

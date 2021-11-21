@@ -6,9 +6,9 @@
             <h2 class="logo"><a href="#">AJA<span>.</span></a></h2>
             <p>Network of local workshop making car repairing/ service  convenient.</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
-              <li class="ftco-animate"><a href="https://twitter.com/Aja53584875?s=08"><span class="fa fa-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="https://twitter.com/Ajaautomobile?t=srehQ4WnwXW_yNuajyiWJQ&s=08"><span class="fa fa-twitter"></span></a></li>
               <li class="ftco-animate"><a href="https://www.facebook.com/Ajaa-105324201833260/"><span class="fa fa-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="https://www.instagram.com/invites/contact/?i=1ktagj3kj19vp&utm_content=m5fparh"><span class="fa fa-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/ajaa.in/"><span class="fa fa-instagram"></span></a></li>
             </ul>
           </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="col-md-12 text-center">
 
           <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Aaja Auto Mobiles All rights reserved 
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Aja Auto Mobiles All rights reserved 
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
         </div>
       </div>
@@ -79,7 +79,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Aaja 
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
   
@@ -172,9 +172,11 @@ $('.submit_enquiry').click(function(){
   let vehicle_number = $('#vehicle_number').val()
   let issue = $('#issue').val()
   let service_type = $('#service_type').val()
+  let address = $('#address').val()
 
-$.post('/api/create-enquiry',{categoryid,brandid,modelid,name,number,date,vehicle_number,issue,service_type},data=>{
+$.post('/api/create-enquiry',{categoryid,brandid,modelid,name,number,date,vehicle_number,issue,service_type,address},data=>{
   alert('Your Enquiry Submitted Successfully Our Team Will Contact you soon.')
+  window.location.reload()
 })
 
   }
@@ -184,5 +186,53 @@ $.post('/api/create-enquiry',{categoryid,brandid,modelid,name,number,date,vehicl
 
 
 </script>
+
+
+
+
+
+
+
+
+
+<script>
+
+getLocation()
+  var x = document.getElementById("demo");
+  
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+          
+
+    } else { 
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  
+  function showPosition(position) {
+    // alert(position.coords.latitude)
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude
+ 
+
+    $.post('/reverse-geocoding',{latitude,longitude},data=>{
+      console.log(data)
+      let table = `<p>
+        <span>${data}</span>
+        </p>`
+        $('#locationtype').html(table)
+        $('#address').val(data)
+    })
+
+
+  }
+  </script>
+
+
+
+
+
+
 
 </html>

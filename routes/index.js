@@ -5,6 +5,31 @@ var pool = require('./pool')
 var table = 'category';
 const fs = require("fs");
 
+
+
+
+const request = require('request');
+const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
+
+var mapsdk = require('mapmyindia-sdk-nodejs');
+
+
+router.post('/reverse-geocoding',(req,res)=>{
+let body = req.body;
+// res.send(body)
+  mapsdk.reverseGeoCodeGivenLatiLongi('l9fksssn2m6snu4dif9d55z7fpwed1kx',req.body.latitude,req.body.longitude).then(function(data)
+  {
+      res.json(data.results[0].formatted_address)
+
+ 
+
+  }).catch(function(ex){
+      console.log(ex);
+      res.json(ex)
+  });
+})
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log('d',req.session.usernumber)
@@ -14,7 +39,7 @@ router.get('/', function(req, res, next) {
 
   pool.query(query+query1,(err,result)=>{
     if(err) throw err;
-    else  res.render('index', { title: 'Express',result,login:true });
+    else  res.render('index', { title: 'Express',result,login:true,type:'home' });
   })
  }
  else{
@@ -23,7 +48,7 @@ router.get('/', function(req, res, next) {
 
   pool.query(query+query1,(err,result)=>{
     if(err) throw err;
-    else  res.render('index', { title: 'Express',result,login:false });
+    else  res.render('index', { title: 'Express',result,login:false,type:'home' });
   })
  }
 
@@ -654,11 +679,11 @@ router.post('/website-customization-insert',(req,res)=>{
 
 router.get('/about',(req,res)=>{
   if(req.session.usernumber){
-    res.render('about',{login:true})
+    res.render('about',{login:true,type:'about'})
 
   }
   else{
-    res.render('about',{login:false})
+    res.render('about',{login:false,type:'about'})
 
   }
 })
@@ -669,11 +694,11 @@ router.get('/about',(req,res)=>{
 
 router.get('/contact',(req,res)=>{
   if(req.session.usernumber){
-    res.render('contact',{login:true,type:''})
+    res.render('contact',{login:true,type:'contact'})
 
   }
   else{
-    res.render('contact',{login:false,type:''})
+    res.render('contact',{login:false,type:'contact'})
 
   }
 })
@@ -700,7 +725,7 @@ router.get('/blogs',(req,res)=>{
   if(req.session.usernumber){
     pool.query(`select * from blog order by id desc`,(err,result)=>{
       if(err) throw err;
-      else res.render('blogs',{login:true,result})
+      else res.render('blogs',{login:true,result,type:'blogs'})
     
     })
 
@@ -708,7 +733,7 @@ router.get('/blogs',(req,res)=>{
   else{
     pool.query(`select * from blog order by id desc`,(err,result)=>{
       if(err) throw err;
-      else res.render('blogs',{login:false,result} )
+      else res.render('blogs',{login:false,result,type:'blogs'} )
     
     })
    }
@@ -719,14 +744,14 @@ router.get('/single-blog',(req,res)=>{
   if(req.session.usernumber){
     pool.query(`select * from blog where id = '${req.query.id}'`,(err,result)=>{
       if(err) throw err;
-      else res.render('single_blog',{login:true,result:result})
+      else res.render('single_blog',{login:true,result:result,type:'blogs'})
     })
 
   }
   else{
     pool.query(`select * from blog where id = '${req.query.id}'`,(err,result)=>{
       if(err) throw err;
-      else res.render('single_blog',{login:false,result:result})
+      else res.render('single_blog',{login:false,result:result,type:'blogs'})
     })
    }
 })
@@ -786,7 +811,7 @@ router.post('/contact',(req,res)=>{
 
 
 router.get('/appointment',(req,res)=>{
-  req.session.usernumber = '9582172786'
+  // req.session.usernumber = '9582172786'
   if(req.session.usernumber){
     pool.query(`select e.* , 
     (select c.name from category c where c.id = e.categoryid) as categoryname,
@@ -795,7 +820,7 @@ router.get('/appointment',(req,res)=>{
     (select i.id from invoice i where i.bookingid = e.id) as isinvoice
     from enquiry e where number = '${req.session.usernumber}' order by id desc`,(err,result)=>{
   if(err) throw err;
-   else res.render('myappointment',{login:true,result:result})
+   else res.render('myappointment',{login:true,result:result,type:'myappointment'})
   // else res.json(result)
 })
   }

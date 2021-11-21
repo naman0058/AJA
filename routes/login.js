@@ -26,7 +26,9 @@ router.post('/verification',(req,res)=>{
     let body = req.body
     // body['number'] = 91+req.body.number
     req.session.numberverify = 91+req.body.number
-  
+    var otp =   Math.floor(100000 + Math.random() * 9000);
+    req.session.reqotp = otp;
+    res.render('otp',{msg : otp , anothermsg:''  })
     //   console.log(req.body)
 
 
@@ -62,6 +64,15 @@ pool.query(`select * from users where number = '${req.session.numberverify}'`,(e
   }
   else {
 
+    var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+
+    body['date'] = today;
+    
     pool.query(`insert into users set ?`,body,(err,result)=>{
       if(err) throw err;
       else {
@@ -84,7 +95,9 @@ pool.query(`select * from users where number = '${req.session.numberverify}'`,(e
   }
   else{
 
-  res.render('otp',{msg : '' , anothermsg : 'Invalid Otp'})
+ var otp =   Math.floor(100000 + Math.random() * 9000);
+ req.session.reqotp = otp;
+  res.render('otp',{msg : otp , anothermsg : 'Invalid Otp'})
     
   }
 })

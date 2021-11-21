@@ -123,7 +123,7 @@ today = yyyy + '/' + mm + '/' + dd;
     body['status'] = 'pending'
     console.log('body h',req.body)
 
-    
+    // pool.query(`select * from users `)
     
         pool.query(`insert into enquiry set ?`,body,(err,result)=>{
           if(err) throw err;

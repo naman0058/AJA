@@ -47,17 +47,21 @@
 								<div class="social-media">
 					    		<p class="mb-0 d-flex">
 					    			<a href="https://www.facebook.com/Ajaa-105324201833260/" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-					    			<a href="https://twitter.com/Aja53584875?s=08" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-					    			<a href="https://www.instagram.com/invites/contact/?i=1ktagj3kj19vp&utm_content=m5fparh" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+					    			<a href="https://twitter.com/Ajaautomobile?t=srehQ4WnwXW_yNuajyiWJQ&s=08" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+					    			<a href="https://www.instagram.com/ajaa.in/" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
 					    			<!-- <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a> -->
 					    		</p>
 				        </div>
 							</div>
 						</div>
 					</div>
-					<p>Network of local workshop making car repairing/ service convenient.</p>
+					<p>Network of local workshop making car repairing/ service convenient.</p><br/>
+
+					<input type="hidden" id="address">
+					
 
 				</div>
+				<p id="locationtype" style="color: white;"></p>
 			</div>
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -69,10 +73,10 @@
 			
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
-	        	<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+	        	<li class="nav-item <%if(type=='home'){%>active<% } %>"><a href="/" class="nav-link">Home</a></li>
+	        	<li class="nav-item  <%if(type=='about'){%>active<% } %>"><a href="/about" class="nav-link">About</a></li>
                 <% if(login==true){ %>
-                    <li class="nav-item"><a href="/appointment" class="nav-link">My Appointment</a></li>
+                    <li class="nav-item  <%if(type=='myappointment'){%>active<% } %> "><a href="/appointment" class="nav-link">My Appointment</a></li>
 
                 <% } else { %>
 					<li class="nav-item"><a href="/login" class="nav-link">Login/Signup</a></li>
@@ -80,8 +84,8 @@
 
 
                     <% } %>
-	        	<li class="nav-item"><a href="/blogs" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+	        	<li class="nav-item  <%if(type=='blogs'){%>active<% } %>"><a href="/blogs" class="nav-link">Blog</a></li>
+	          <li class="nav-item  <%if(type=='contact'){%>active<% } %>"><a href="/contact" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
