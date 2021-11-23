@@ -501,7 +501,7 @@ today = mm + '/' + dd + '/' + yyyy;
       }
       else if(result[0]) {
         res.json({
-            status : 100,
+            status : 200,
             type:'success',
             description:'successfully registered'
 
@@ -510,6 +510,7 @@ today = mm + '/' + dd + '/' + yyyy;
       else{
        pool.query(`insert into users set ?`,body,(err,result)=>{
            if(err) {
+             console.log(err)
               res.json({
                   status:500,
                   type : 'error',
@@ -517,6 +518,8 @@ today = mm + '/' + dd + '/' + yyyy;
               })
            }
            else {
+            console.log(result)
+
               res.json({
                   status:200,
                   type : 'success',

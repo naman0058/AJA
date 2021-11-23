@@ -19,7 +19,7 @@ let body = req.body;
 // res.send(body)
   mapsdk.reverseGeoCodeGivenLatiLongi('l9fksssn2m6snu4dif9d55z7fpwed1kx',req.body.latitude,req.body.longitude).then(function(data)
   {
-      res.json(data.results[0].formatted_address)
+      res.json(data.results[0].formatted_address) 
 
  
 
