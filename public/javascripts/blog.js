@@ -50,7 +50,7 @@ function makeTable(categories){
 
 <th>Name</th>
 <th>Description</th>
-
+<th>Image</th>
 <th>Options</th>
 </tr>
 </thead>
@@ -60,6 +60,8 @@ $.each(categories,(i,item)=>{
 table+=`<tr>
 <td>${item.name}</td>
 <td>${item.description}</td>
+<td><img src = '/images/${item.image}' style='width:50px;height:50px'></td>
+
 
 
 <td>
@@ -93,11 +95,14 @@ $('#result').on('click', '.deleted', function() {
 $('#result').on('click', '.edits', function() {
     const id = $(this).attr('id')
     const result = subcategories.find(item => item.id == id);
-    fillDropDown('pcategoryid', categories, 'Choose Category', result.categoryid)
+    console.log(result)
+    // fillDropDown('pcategoryid', categories, 'Choose Category', result.categoryid)
     $('#editdiv').show()
     $('#result').hide()
     $('#insertdiv').hide() 
     $('#pid').val(result.id)
+    $('#pname').val(result.name)
+
      let table = `<p>${result.description}</p>
      `
      $('.peditor').html(table)
@@ -118,12 +123,23 @@ $('#result').on('click', '.edits', function() {
 
  
 $('#update').click(function(){  //data insert in database
+    let content = $(".peditor").html().trim();
+
+
     let updateobj = {
         id: $('#pid').val(),
         name: $('#pname').val(),
-        categoryid:$('#pcategoryid').val(),
+        description :content,
+
+
+
+
+        // categoryid:$('#pcategoryid').val(),
        
         }
+
+
+
 
     $.post(`${table}/update`, updateobj , function(data) {
        update()

@@ -206,4 +206,54 @@ router.get('/blog/all',(req,res)=>{
 })
 
 
+
+
+router.get('/blog/delete', (req, res) => {
+    let body = req.body
+    pool.query(`delete from blog where id = ${req.query.id}`, (err, result) => {
+        if(err) {
+            res.json({
+                status:500,
+                type : 'error',
+                description:err
+            })
+        }
+        else {
+            res.json({
+                status:200,
+                type : 'success',
+                description:'successfully delete'
+            })
+        }
+    })
+})
+
+
+
+
+
+
+
+router.post('/blog/update', (req, res) => {
+    pool.query(`update blog set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+        if(err) {
+            res.json({
+                status:500,
+                type : 'error',
+                description:err
+            })
+        }
+        else {
+            res.json({
+                status:200,
+                type : 'success',
+                description:'successfully update'
+            })
+  
+            
+        }
+    })
+  })
+
+
 module.exports = router;
