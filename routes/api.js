@@ -328,7 +328,9 @@ router.get('/single-enquiry',(req,res)=>{
   (select c.name from category c where c.id = e.categoryid) as categoryname,
   (select b.name from brand b where b.id = e.brandid) as brandname,
   (select m.name from model m where m.id = e.modelid) as modelname,
-  (select d.name from delivery d where d.number = e.assigned_number ) as assignedname
+  (select d.name from delivery d where d.number = e.assigned_number ) as assignedname,
+  (select i.description from invoice i where i.bookingid = e.id) as mechanicdescription
+
   from enquiry e where e.id = '${req.query.id}' ;`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
